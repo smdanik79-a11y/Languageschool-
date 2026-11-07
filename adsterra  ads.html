@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Learn English, Japanese, Korean, Chinese, Russian or Spanish with short lessons, voice practice, a 5-month course and a certificate.">
+<title>LinguaPal - Learn a Language</title>
+<script>
+/* Google AdSense loads on the web only. The APK uses AdMob through window.AdBridge. */
+if (!window.AdBridge) {
+  var adsScript = document.createElement('script');
+  adsScript.async = true;
+  adsScript.crossOrigin = 'anonymous';
+  adsScript.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3311449707263452';
+  document.head.appendChild(adsScript);
+}
+</script>
+<style>
+:root{--g:#22c55e;--gd:#15803d;--o:#f97316;--tx:#1e293b;--mut:#64748b;--red:#ef4444;--blue:#0ea5e9}
+*{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,"Noto Sans JP","Noto Sans KR","Noto Sans SC","Noto Sans",sans-serif}
+body{min-height:100vh;color:var(--tx);background:radial-gradient(circle at top,#dcfce7 0%,#f0fdf4 35%,#f8fafc 100%);padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+header{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:12px 16px;position:sticky;top:env(safe-area-inset-top,0px);background:linear-gradient(90deg,#16a34a,#22c55e);color:#fff;z-index:5;font-weight:800;font-size:14px;box-shadow:0 4px 14px rgba(21,128,61,.3)}
+main{max-width:520px;margin:0 auto;padding:16px 16px 40px}
+button{cursor:pointer;border:0;border-radius:16px;font-weight:800;font-size:16px;padding:14px 18px;background:linear-gradient(180deg,#34d399,#16a34a);color:#fff;box-shadow:0 5px 0 #15803d,0 8px 18px rgba(0,0,0,.08);width:100%;margin-top:12px;transition:transform .08s}
+button:active{transform:translateY(3px);box-shadow:0 2px 0 #15803d}
+button.alt{background:#fff;color:var(--blue);box-shadow:0 5px 0 #cbd5e1;border:2px solid #cbd5e1}
+button.sm{width:auto;padding:9px 14px;font-size:14px;margin-top:0}
+button:disabled{opacity:.45}
+.card{background:#fff;border-radius:20px;padding:18px;margin:12px 0;box-shadow:0 6px 20px rgba(15,23,42,.08)}
+.hero{display:flex;align-items:center;gap:12px;background:#fff;border-radius:22px;padding:14px;box-shadow:0 6px 20px rgba(15,23,42,.08)}
+.bubble{position:relative;background:#fff7ed;border:2px solid #fed7aa;border-radius:16px;padding:12px 14px;font-weight:700;color:#9a3412;flex:1;font-size:15px}
+.bubble:before{content:"";position:absolute;left:-10px;top:50%;margin-top:-8px;border:8px solid transparent;border-right-color:#fed7aa;border-left:0}
+.mascot{flex-shrink:0;animation:bob 2.4s ease-in-out infinite}
+.mascot.cheer{animation:jump .5s ease 2}
+.mascot.sad{animation:none;transform:rotate(-6deg)}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes jump{0%,100%{transform:translateY(0)}40%{transform:translateY(-16px)}}
+.big{font-size:30px;font-weight:900;text-align:center;margin:14px 0;color:#0f172a}
+.sub{color:var(--mut);text-align:center;font-size:15px;font-weight:600}
+.opt{background:#fff;border:2px solid #e2e8f0;color:var(--tx);box-shadow:0 4px 0 #e2e8f0;margin-top:8px}
+.opt.ok{border-color:var(--g);background:#dcfce7;color:#166534;box-shadow:0 4px 0 #86efac}
+.opt.bad{border-color:var(--red);background:#fee2e2;color:#991b1b;box-shadow:0 4px 0 #fca5a5}
+.fb{padding:12px 14px;border-radius:14px;margin-top:12px;font-weight:700}
+.fb.ok{background:#dcfce7;color:#166534}
+.fb.bad{background:#fee2e2;color:#991b1b}
+input,textarea{width:100%;padding:14px;border-radius:14px;border:2px solid #e2e8f0;font-size:17px;margin-top:10px;background:#fff}
+textarea{min-height:130px;font-size:15px}
+.bar{height:16px;background:#e2e8f0;border-radius:12px;overflow:hidden;margin:10px 0}
+.bar div{height:100%;background:linear-gradient(90deg,#4ade80,#16a34a);transition:width .4s;border-radius:12px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.lang{background:#fff;border-radius:20px;padding:18px 10px;text-align:center;cursor:pointer;font-weight:800;box-shadow:0 6px 16px rgba(15,23,42,.08);font-size:18px}
+.lang span{font-size:34px;display:block}
+.lesson-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.lbtn{background:#fff;border:2px solid #e2e8f0;border-radius:14px;padding:10px 4px;text-align:center;font-size:13px;font-weight:800;color:var(--tx);cursor:pointer;box-shadow:0 4px 0 #e2e8f0}
+.lbtn.open{border-color:#fdba74;background:#fff7ed;color:#c2410c;box-shadow:0 4px 0 #fdba74}
+.lbtn.done{background:#dcfce7;border-color:#86efac;color:#166534;box-shadow:0 4px 0 #86efac}
+.lbtn.lock{opacity:.45;cursor:not-allowed}
+.month{margin:22px 0 6px;font-size:17px;font-weight:900;color:var(--gd)}
+.row{display:flex;gap:8px;flex-wrap:wrap;justify-content:space-between;align-items:center;padding:6px 0}
+.hint{font-size:13px;color:var(--mut);margin-top:6px}
+.tools{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.tools button{margin-top:0;flex:1}
+.msg{max-width:80%;padding:10px 13px;border-radius:16px;margin:6px 0;font-size:15px;line-height:1.4}
+.msg.me{margin-left:auto;background:#dcfce7;color:#14532d}
+.msg.bot{background:#eff6ff;color:#1e3a8a}
+.inrow{display:flex;gap:8px;margin-top:10px}
+.inrow input{margin-top:0}
+.inrow button{width:auto;margin-top:0}
+.chat{height:340px;overflow:auto;background:#fff;border-radius:20px;padding:12px;box-shadow:0 6px 20px rgba(15,23,42,.08)}
+.cert{background:#fffbeb;border:6px double #b45309;border-radius:18px;padding:28px 18px;text-align:center;margin:12px 0}
+.cert .ctitle{font-size:22px;font-weight:900;color:#92400e}
+.cert .cname{font-size:30px;font-weight:900;margin:14px 0;color:#1e293b;font-family:Georgia,serif}
+.ad{text-align:center;font-size:12px;color:#94a3b8;padding:10px;border:1px dashed #cbd5e1;border-radius:12px;margin:16px 0;min-height:50px}
+.adslot{max-width:100%;overflow:hidden;text-align:center;margin:14px 0}
+.adslot-s{margin:10px 0 0;min-height:60px}
+@media print{header,button,.ad,.adslot,.hero,.tools{display:none!important}body{background:#fff}}
+</style>
+</head>
+<body>
+<header>
+  <span id="hd-lang"></span>
+  <span id="hd-stats"></span>
+</header>
+<main id="app"></main>
+
+<script>
+/* ===== Ad settings ===== */
+const ADS = {
+  appId:        'ca-app-pub-3940256099942544~3347511713',
+  banner:       'ca-app-pub-3940256099942544/6300978111',
+  interstitial: 'ca-app-pub-3940256099942544/1033173712',
+  rewarded:     'ca-app-pub-3940256099942544/5224354917'
+};
+const ADSENSE = { client:'ca-pub-3311449707263452', small:'2317129344', full:'3055495946' };
+
+const COURSE_WEEKS = 20, LESSONS_PER_WEEK = 3, TOTAL_LESSONS = COURSE_WEEKS * LESSONS_PER_WEEK;
+const PASS_MARK = 70;
+const LEAGUES = [[0,'Bamboo'],[500,'Bronze'],[1500,'Silver'],[3000,'Gold'],[5000,'Diamond']];
+
+/* Each word: [target text, romanization or '', English meaning] */
+const BANKS = {
+  en:{name:'English',code:'en-US',flag:'🇬🇧',words:[
+    ['Hello','','a greeting'],['Thank you','','to show gratitude'],['Water','','a clear drink'],['Book','','pages to read'],
+    ['House','','a place to live'],['Friend','','someone you like'],['Good morning','','a morning greeting'],['School','','where you learn'],
+    ['Food','','what you eat'],['Today','','this day'],['Please','','a polite request'],['Night','','the dark time']]},
+  ja:{name:'Japanese',code:'ja-JP',flag:'🇯🇵',words:[
+    ['こんにちは','konnichiwa','hello'],['ありがとう','arigatou','thank you'],['水','mizu','water'],['本','hon','book'],
+    ['家','ie','house'],['友達','tomodachi','friend'],['おはよう','ohayou','good morning'],['学校','gakkou','school'],
+    ['ごはん','gohan','food'],['今日','kyou','today'],['お願いします','onegaishimasu','please'],['夜','yoru','night']]},
+  ko:{name:'Korean',code:'ko-KR',flag:'🇰🇷',words:[
+    ['안녕하세요','annyeonghaseyo','hello'],['감사합니다','gamsahamnida','thank you'],['물','mul','water'],['책','chaek','book'],
+    ['집','jip','house'],['친구','chingu','friend'],['좋은 아침','joeun achim','good morning'],['학교','hakgyo','school'],
+    ['음식','eumsik','food'],['오늘','oneul','today'],['부탁해요','butakhaeyo','please'],['밤','bam','night']]},
+  zh:{name:'Chinese',code:'zh-CN',flag:'🇨🇳',words:[
+    ['你好','nǐ hǎo','hello'],['谢谢','xièxie','thank you'],['水','shuǐ','water'],['书','shū','book'],
+    ['房子','fángzi','house'],['朋友','péngyou','friend'],['早上好','zǎoshang hǎo','good morning'],['学校','xuéxiào','school'],
+    ['食物','shíwù','food'],['今天','jīntiān','today'],['请','qǐng','please'],['晚上','wǎnshang','night']]},
+  ru:{name:'Russian',code:'ru-RU',flag:'🇷🇺',words:[
+    ['Привет','privet','hello'],['Спасибо','spasibo','thank you'],['Вода','voda','water'],['Книга','kniga','book'],
+    ['Дом','dom','house'],['Друг','drug','friend'],['Доброе утро','dobroe utro','good morning'],['Школа','shkola','school'],
+    ['Еда','eda','food'],['Сегодня','segodnya','today'],['Пожалуйста','pozhaluysta','please'],['Ночь','noch','night']]},
+  es:{name:'Spanish',code:'es-ES',flag:'🇪🇸',words:[
+    ['Hola','','hello'],['Gracias','','thank you'],['Agua','','water'],['Libro','','book'],
+    ['Casa','','house'],['Amigo','','friend'],['Buenos días','','good morning'],['Escuela','','school'],
+    ['Comida','','food'],['Hoy','','today'],['Por favor','','please'],['Noche','','night']]}
+};
+
+/* ===== State ===== */
+const todayStr = () => new Date().toISOString().slice(0,10);
+const defaultState = () => ({lang:null, done:{}, xp:0, streak:0, last:'', hearts:5, custom:{}, certs:{}, examPassed:{}, sound:true});
+let S;
+try { S = Object.assign(defaultState(), JSON.parse(localStorage.getItem('linguapal_state')||'null')||{}); } catch(e){ S = defaultState(); }
+function save(){ try{ localStorage.setItem('linguapal_state', JSON.stringify(S)); }catch(e){} }
+function bank(l){ return S.custom[l] ? S.custom[l].words : BANKS[l].words; }
+function langInfo(l){ return S.custom[l] ? {name:S.custom[l].name, code:'', flag:'🌐'} : BANKS[l]; }
+function leagueOf(xp){ let n=LEAGUES[0][1]; LEAGUES.forEach(([m,nm])=>{ if(xp>=m) n=nm; }); return n; }
+
+/* ===== Utilities ===== */
+const $ = s => document.querySelector(s);
+const app = () => $('#app');
+const shuffle = a => { a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; };
+const norm = s => String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[\s.,!?'’\-]/g,'');
+const esc = s => String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+/* Text to speech: characters speak in the given language */
+function speak(text, code){
+  if(!S.sound || !code || !('speechSynthesis' in window)) return;
+  const u = new SpeechSynthesisUtterance(text); u.lang = code; u.rate = 0.9;
+  speechSynthesis.cancel(); speechSynthesis.speak(u);
+}
+function toggleSound(){ S.sound = !S.sound; save(); if(!S.sound && 'speechSynthesis' in window) speechSynthesis.cancel(); home(); }
+
+/* Voice input (speech recognition). Works in Chrome and Edge, and where the device supports it. */
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+function listen(lang, onResult){
+  if(!SR){ alert('Voice input is not supported on this device. Please type your answer.'); return; }
+  const r = new SR(); r.lang = lang || 'en-US'; r.interimResults = false; r.maxAlternatives = 1;
+  r.onresult = e => onResult(e.results[0][0].transcript);
+  r.onerror = () => {};
+  try { r.start(); } catch(e){}
+}
+
+/* ===== Characters ===== */
+function bulbul(mood='happy', size=84){
+  const mouth = mood==='sad' ? 'M38 66 Q50 58 62 66' : mood==='cheer' ? 'M34 58 Q50 78 66 58' : 'M38 60 Q50 70 62 60';
+  const brow = mood==='sad' ? '<path d="M32 34 L44 38" stroke="#7c2d12" stroke-width="3" stroke-linecap="round"/><path d="M68 34 L56 38" stroke="#7c2d12" stroke-width="3" stroke-linecap="round"/>' : '';
+  return `<svg class="mascot ${mood}" width="${size}" height="${size}" viewBox="0 0 100 100" aria-label="Bulbul">
+    <path d="M20 40 Q30 10 50 18 Q70 10 80 40" fill="#f97316"/>
+    <ellipse cx="50" cy="56" rx="36" ry="34" fill="#fb923c"/>
+    <ellipse cx="50" cy="62" rx="24" ry="20" fill="#fed7aa"/>
+    <circle cx="38" cy="46" r="9" fill="#fff"/><circle cx="62" cy="46" r="9" fill="#fff"/>
+    <circle cx="40" cy="47" r="4.5" fill="#0f172a"/><circle cx="64" cy="47" r="4.5" fill="#0f172a"/>
+    ${brow}
+    <polygon points="46,54 54,54 50,62" fill="#facc15"/>
+    <path d="${mouth}" stroke="#7c2d12" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </svg>`;
+}
+function alex(mood='happy', size=84){
+  const mouth = mood==='sad' ? 'M40 74 Q50 68 60 74' : mood==='cheer' ? 'M38 70 Q50 84 62 70' : 'M40 72 Q50 78 60 72';
+  return `<svg class="mascot ${mood}" width="${size}" height="${size}" viewBox="0 0 100 100" aria-label="Alex">
+    <path d="M26 40 Q26 10 50 10 Q74 10 74 40 Q66 24 50 24 Q34 24 26 40Z" fill="#3b2f2f"/>
+    <ellipse cx="50" cy="44" rx="23" ry="25" fill="#fcd9b0"/>
+    <circle cx="41" cy="44" r="3" fill="#222"/><circle cx="59" cy="44" r="3" fill="#222"/>
+    <path d="${mouth}" stroke="#7c2d12" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M22 96 Q22 62 50 60 Q78 62 78 96Z" fill="#2563eb"/>
+  </svg>`;
+}
+
+/* ===== Advertising ===== */
+const adsenseSmallHTML = `<ins class="adsbygoogle" style="display:block" data-ad-client="${ADSENSE.client}" data-ad-slot="${ADSENSE.small}" data-ad-format="auto" data-full-width-responsive="true"></ins>`;
+const adsenseFullHTML = `<ins class="adsbygoogle" style="display:inline-block;width:360px;height:800px" data-ad-client="${ADSENSE.client}" data-ad-slot="${ADSENSE.full}"></ins>`;
+
+/* Adsterra Banner & Popunder Code Injection */
+const adsterraBannerHTML = `
+<script>
+  atOptions = {
+    'key' : '213ab3b94ffb607c83c4f441cedfd920',
+    'format' : 'iframe',
+    'height' : 250,
+    'width' : 300,
+    'params' : {}
+  };
+<\/script>
+<script src="https://brijmohan.org/22/213ab3b94ffb607c83c4f441cedfd920"><\/script>
+`;
+
+const adsterraPopunderHTML = `
+<script data-cfasync="false" src="https://ahuramazda.org/1/28d0c6abd35118b269d6936f868c8758"><\/script>
+`;
+
+function pushAds(){
+  if(window.AdBridge) return;
+  document.querySelectorAll('ins.adsbygoogle:not([data-adsbygoogle-status])').forEach(()=>{
+    try{ (window.adsbygoogle = window.adsbygoogle || []).push({}); }catch(e){}
+  });
+}
+new MutationObserver(()=>setTimeout(()=>{ pushAds(); mountAds(); },0)).observe(app(), {childList:true});
+
+function adBanner(){
+  if(window.AdBridge){ setTimeout(()=>{ try{ AdBridge.showBanner(ADS.banner); }catch(e){} },0); return `<div class="ad">Advertisement</div>`; }
+  return adSlotHTML('at');
+}
+
+function adSlotHTML(kind){ return `<div class="adslot adslot-s" data-ad="${kind}"></div>`; }
+
+/* Banner under each answered question: changes every question (Adsterra <-> AdSense) */
+function adSmall(){
+  if(window.AdBridge) return `<div class="ad">Advertisement</div>`;
+  return adSlotHTML('at');
+}
+
+/* One ad per completed level */
+function levelAdSlot(){
+  if(window.AdBridge){ setTimeout(()=>{ try{ AdBridge.showInterstitial(ADS.interstitial); }catch(e){} },0); return `<div class="ad">Advertisement</div>`; }
+  return adSlotHTML('level');
+}
+
+/* Scripts set through innerHTML do not run, so ad scripts are created as DOM elements here */
+function mountAds(){
+  document.querySelectorAll('[data-ad]:not([data-mounted])').forEach(el=>{
+    el.dataset.mounted = '1';
+    const k = el.dataset.ad;
+    if(k==='at'){
+      el.style.cssText = 'width:300px;height:250px;max-width:100%;margin:14px auto;';
+      const loadBanner = (attempt)=>{
+        const o = document.createElement('script');
+        o.text = "atOptions = {'key':'213ab3b94ffb607c83c4f441cedfd920','format':'iframe','height':250,'width':300,'params':{}};";
+        el.appendChild(o);
+        const s = document.createElement('script');
+        s.src = 'https://brijmohan.org/22/213ab3b94ffb607c83c4f441cedfd920';
+        s.onerror = ()=>{ if(attempt < 2) setTimeout(()=>loadBanner(attempt+1), 2000); };
+        el.appendChild(s);
+      };
+      loadBanner(1);
+    } else if(k==='adsense'){
+      el.innerHTML = adsenseSmallHTML;
+      pushAds();
+    } else if(k==='level'){
+      const s = document.createElement('script');
+      s.setAttribute('data-cfasync','false');
+      s.src = 'https://ahuramazda.org/1/28d0c6abd35118b269d6936f868c8758';
+      el.appendChild(s);
+    }
+  });
+}
+
+function adFinal(){
+  if(window.AdBridge){ setTimeout(()=>{ try{ AdBridge.showInterstitial(ADS.interstitial); }catch(e){} },0); return `<div class="ad">Advertisement</div>`; }
+  return adSlotHTML('at');
+}
+function adRewarded(onDone){
+  window._rewardCb = onDone;
+  if(window.AdBridge && AdBridge.showRewarded) AdBridge.showRewarded(ADS.rewarded);
+  else { alert('Rewarded ads work in the mobile app. In the browser preview, the reward is granted directly.'); window.onRewardEarned(); }
+}
+window.onRewardEarned = function(){ if(window._rewardCb){ const cb=window._rewardCb; window._rewardCb=null; cb(); } };
+
+/* ===== Header ===== */
+function renderHeader(){
+  $('#hd-lang').textContent = S.lang ? `${langInfo(S.lang).flag} ${langInfo(S.lang).name}` : '🐦 LinguaPal';
+  $('#hd-stats').textContent = `🔥 ${S.streak}  ⭐ ${S.xp}  ❤️ ${S.hearts}  ${leagueOf(S.xp)}`;
+}
+
+/* ===== Home ===== */
+function home(){
+  renderHeader();
+  if(!S.lang) return chooseLang();
+  const info = langInfo(S.lang), done = S.done[S.lang]||0;
+  const examReady = done >= TOTAL_LESSONS;
+  const cert = S.certs[S.lang];
+  let html = `
+    <div class="hero">${bulbul('happy',84)}<div class="bubble">Ready to learn ${esc(info.name)} today? A little every day goes a long way!</div></div>
+    <div class="card">
+      <div class="row"><b>${info.flag} ${esc(info.name)}</b><span class="hint">League: ${leagueOf(S.xp)}</span></div>
+      <div class="bar"><div style="width:${(done/TOTAL_LESSONS*100).toFixed(1)}%"></div></div>
+      <div class="hint">${done} / ${TOTAL_LESSONS} lessons completed (5-month course)</div>
+      <button ${examReady?'':'disabled'} onclick="startExam()">📝 Final Exam ${examReady?'':'(finish all lessons first)'}</button>
+      ${cert ? `<button class="alt" onclick="showCert('${S.lang}')">🎓 My Certificate</button>` : ''}
+      <button class="alt" ${examReady?'':'disabled'} onclick="openChat()">💬 Talk with Alex</button>
+    </div>`;
+  for(let m=0;m<5;m++){
+    html += `<div class="month">Month ${m+1}</div><div class="lesson-grid">`;
+    for(let w=m*4; w<m*4+4; w++){
+      for(let l=0;l<LESSONS_PER_WEEK;l++){
+        const k = w*LESSONS_PER_WEEK + l;
+        const cls = k<done ? 'done' : (k===done ? 'open' : 'lock');
+        html += `<div class="lbtn ${cls}" ${k<=done?`onclick="startLesson(${k})"`:''}>Week ${w+1}<br>Lesson ${l+1}</div>`;
+      }
+    }
+    html += `</div>`;
+  }
+  html += `<div class="tools"><button class="alt" onclick="toggleSound()">${S.sound?'🔊 Sound on':'🔇 Sound off'}</button><button class="alt" onclick="resetLang()">Change language</button></div>${adBanner()}`;
+  app().innerHTML = html;
+}
+
+function chooseLang(){
+  let html = `<div class="hero">${bulbul('happy',84)}<div class="bubble">Hi, I'm Bulbul! Which language would you like to learn?</div></div><div class="grid" style="margin-top:14px">`;
+  Object.keys(BANKS).forEach(k=> html += `<div class="lang" onclick="setLang('${k}')"><span>${BANKS[k].flag}</span>${BANKS[k].name}</div>`);
+  Object.keys(S.custom).forEach(k=> html += `<div class="lang" onclick="setLang('${k}')"><span>🌐</span>${esc(S.custom[k].name)}</div>`);
+  html += `</div><button onclick="customForm()">Add my own language</button>
+    <div class="hint">Each course lasts 5 months (20 weeks, 60 lessons) and ends with a final exam.</div>${adBanner()}`;
+  app().innerHTML = html;
+}
+function setLang(l){ S.lang=l; if(S.done[l]===undefined) S.done[l]=0; save(); home(); }
+function resetLang(){ S.lang=null; save(); home(); }
+
+function customForm(){
+  renderHeader();
+  app().innerHTML = `<div class="hero">${bulbul('happy',70)}<div class="bubble">Enter your language name and words!</div></div>
+    <input id="cname" placeholder="Language name (for example: French)">
+    <textarea id="cwords" placeholder="One per line: word | meaning&#10;Bonjour | hello&#10;Merci | thank you"></textarea>
+    <div class="hint">Enter at least 5 words.</div>
+    <button onclick="saveCustom()">Save</button>
+    <button class="alt" onclick="home()">Back</button>`;
+}
+function saveCustom(){
+  const name = $('#cname').value.trim();
+  const words = $('#cwords').value.split('\n').map(x=>x.split('|').map(s=>s.trim())).filter(p=>p[0]&&p[1]).map(p=>[p[0],'',p[1]]);
+  if(!name || words.length<5){ alert('Please enter a language name and at least 5 words.'); return; }
+  const id = 'c_'+Date.now();
+  S.custom[id] = {name, words}; S.done[id]=0; S.lang=id; save(); home();
+}
+
+/* ===== Lessons and exams ===== */
+function makeItem(W, w){
+  const distract = shuffle(W.filter(x=>x!==w)).slice(0,3).map(x=>x[2]);
+  return {w, choices: shuffle([w[2],...distract])};
+}
+function buildLesson(lang,k){
+  const W=bank(lang), n=W.length, ex=[];
+  for(let i=0;i<Math.min(5,n);i++){
+    const w=W[(k*5+i)%n];
+    ex.push({type:'choose', ...makeItem(W,w)});
+    ex.push({type:'type', w});
+    if(i%2===0) ex.push({type:'listen', ...makeItem(W,w)});
+  }
+  return ex;
+}
+let L = null;
+function startLesson(k){
+  if(S.hearts<=0){ outOfHearts(); return; }
+  L = {lang:S.lang, k, exam:false, ex:buildLesson(S.lang,k), i:0, correct:0, wrong:0, answered:false, picked:-1, fb:null, lastSpoken:-1};
+  renderEx();
+}
+function startExam(){
+  if(!((S.done[S.lang]||0) >= TOTAL_LESSONS)) return;
+  const W=bank(S.lang), pool=shuffle(W), ex=[];
+  for(let i=0;i<20;i++){
+    const w=pool[i%pool.length];
+    ex.push(i%2 ? {type:'type', w} : {type:'choose', ...makeItem(W,w)});
+  }
+  L = {lang:S.lang, k:-1, exam:true, ex, i:0, correct:0, wrong:0, answered:false, picked:-1, fb:null, lastSpoken:-1};
+  renderEx();
+}
+
+function renderEx(){
+  renderHeader();
+  const e=L.ex[L.i], info=langInfo(L.lang);
+  const pct=(L.i/L.ex.length*100).toFixed(0);
+  const mood = L.answered ? (L.fb.ok?'cheer':'sad') : 'happy';
+  let prompt, body='';
+  if(e.type==='choose'){
+    prompt = `<div class="sub">What does this mean?</div><div class="big">${esc(e.w[0])}</div>`;
+    body = e.choices.map((c,i)=>optBtn(c,i,e)).join('');
+  } else if(e.type==='listen'){
+    prompt = `<div class="sub">Listen, then choose the meaning</div><div style="text-align:center"><button class="alt sm" onclick="speakCur()">🔊 Listen again</button></div>`;
+    body = e.choices.map((c,i)=>optBtn(c,i,e)).join('');
+  } else {
+    prompt = `<div class="sub">Write this in ${esc(info.name)}</div><div class="big">${esc(e.w[2])}</div>`;
+  }
+  const inputBox = `<input id="ans" placeholder="${e.type==='type'?'Type the word...':'Type the meaning or tap an option'}" onkeydown="if(event.key==='Enter')submitText()">
+    <div class="tools">
+      <button class="alt sm" onclick="listenAnswer()">🎤 Speak</button>
+      <button class="sm" onclick="submitText()">Check</button>
+    </div>`;
+  let fbHtml = '';
+  if(L.answered){
+    fbHtml = `<div class="fb ${L.fb.ok?'ok':'bad'}">${L.fb.ok?'Great! Correct 🎉':'Not quite. Correct answer: '+esc(L.fb.ans)}</div>
+      <div class="tools"><button onclick="nextEx()">Next ➜</button><button class="alt sm" onclick="listenNext()">🎤 Say "next"</button></div>${L.fb.ok ? adSmall() : ''}`;
+  }
+  const bubble = L.answered ? (L.fb.ok?'Excellent! Keep going.':'No worries, you will get the next one!') : (L.exam?'Exam time. Focus!':'You can do this!');
+  app().innerHTML = `
+    <div class="bar"><div style="width:${pct}%"></div></div>
+    <div class="hero">${bulbul(mood,72)}<div class="bubble">${bubble}</div></div>
+    <div class="card">${L.exam?'<div class="sub">📝 Final exam</div>':''}${prompt}${body}${L.answered?'':inputBox}${fbHtml}</div>
+    ${L.answered || window.AdBridge ? '' : adSlotHTML('at')}
+    <button class="alt sm" onclick="home()">Exit</button>`;
+  if(!L.answered && L.lastSpoken!==L.i){ L.lastSpoken=L.i; speakCur(); }
+  if(!L.answered && e.type==='type') setTimeout(()=>{ const el=$('#ans'); if(el) el.focus(); },50);
+}
+function optBtn(c,i,e){
+  let cls='opt';
+  if(L.answered){ if(c===e.w[2]) cls+=' ok'; else if(i===L.picked && !L.fb.ok) cls+=' bad'; }
+  return `<button class="${cls}" ${L.answered?'disabled':''} onclick="pick(${i})">${esc(c)}</button>`;
+}
+function speakCur(){ const e=L.ex[L.i]; speak(e.w[0], langInfo(L.lang).code); }
+
+function pick(i){
+  if(L.answered) return;
+  const e=L.ex[L.i];
+  const val = i>=0 ? e.choices[i] : null;
+  const ok = val===e.w[2];
+  L.answered=true; L.picked=i;
+  if(ok){ L.correct++; S.xp+=10; } else { L.wrong++; if(!L.exam) S.hearts=Math.max(0,S.hearts-1); }
+  L.fb={ok, ans:e.w[2]};
+  save(); renderEx();
+}
+function checkType(v){
+  if(L.answered) return;
+  const e=L.ex[L.i];
+  const t = norm(v);
+  const ok = !!t && (t===norm(e.w[0]) || (e.w[1] && t===norm(e.w[1])));
+  L.answered=true;
+  if(ok){ L.correct++; S.xp+=10; } else { L.wrong++; if(!L.exam) S.hearts=Math.max(0,S.hearts-1); }
+  L.fb={ok, ans: e.w[1] ? `${e.w[0]} (${e.w[1]})` : e.w[0]};
+  save(); renderEx();
+}
+function submitText(){
+  if(L.answered) return;
+  const el=$('#ans'); const v = el ? el.value : '';
+  const e=L.ex[L.i];
+  if(e.type==='type'){ checkType(v); return; }
+  const idx = e.choices.findIndex(c=>norm(c)===norm(v));
+  if(idx>=0) pick(idx);
+  else if(v.trim()){
+    L.answered=true; L.picked=-1; L.wrong++;
+    if(!L.exam) S.hearts=Math.max(0,S.hearts-1);
+    L.fb={ok:false, ans:e.w[2]}; save(); renderEx();
+  }
+}
+function listenAnswer(){
+  if(L.answered) return;
+  const e=L.ex[L.i];
+  if(e.type==='type'){
+    listen(langInfo(L.lang).code || 'en-US', t=>{ const el=$('#ans'); if(el) el.value=t; checkType(t); });
+  } else {
+    listen('en-US', t=>{
+      const idx = e.choices.findIndex(c=>norm(c)===norm(t) || norm(t).includes(norm(c)));
+      if(idx>=0) pick(idx); else { const el=$('#ans'); if(el) el.value=t; }
+    });
+  }
+}
+function listenNext(){ listen('en-US', t=>{ if(/next|continue|go/i.test(t)) nextEx(); }); }
+
+function nextEx(){
+  L.i++; L.answered=false; L.fb=null; L.picked=-1;
+  if(!L.exam && S.hearts<=0 && L.i<L.ex.length){ outOfHearts(); return; }
+  if(L.i>=L.ex.length) (L.exam ? examFinish() : finishLesson()); else renderEx();
+}
+
+function outOfHearts(){
+  renderHeader();
+  app().innerHTML = `<div class="hero">${bulbul('sad',72)}<div class="bubble">You are out of hearts! Watch a short ad to get more.</div></div>
+    <button onclick="adRewarded(()=>{ S.hearts=5; save(); if(L && L.i<L.ex.length){ L.answered=false; L.fb=null; L.picked=-1; renderEx(); } else home(); })">🎁 Watch ad to refill hearts</button>
+    <button class="alt" onclick="home()">Back</button>`;
+}
+
+function finishLesson(){
+  S.done[L.lang] = Math.max(S.done[L.lang]||0, L.k+1);
+  S.xp += 20;
+  const t=todayStr();
+  if(S.last!==t){ const y=new Date(Date.now()-86400000).toISOString().slice(0,10); S.streak = S.last===y ? S.streak+1 : 1; S.last=t; }
+  save(); renderHeader();
+  const acc = Math.round(L.correct/((L.correct+L.wrong)||1)*100);
+  app().innerHTML = `<div class="hero">${bulbul('cheer',84)}<div class="bubble">Well done! Lesson complete 🎉</div></div>
+    <div class="card">
+      <div class="row"><span>Correct answers</span><b>${L.correct}</b></div>
+      <div class="row"><span>Wrong answers</span><b>${L.wrong}</b></div>
+      <div class="row"><span>Accuracy</span><b>${acc}%</b></div>
+      <div class="row"><span>XP earned</span><b>+${L.correct*10+20}</b></div>
+    </div>
+    <button onclick="home()">Continue</button>${levelAdSlot()}`;
+}
+
+function examFinish(){
+  const pct = Math.round(L.correct/L.ex.length*100), pass = pct>=PASS_MARK;
+  if(pass) S.examPassed[S.lang]=pct;
+  S.xp += pass ? 100 : 20;
+  save(); renderHeader();
+  app().innerHTML = `<div class="hero">${alex(pass?'cheer':'sad',84)}<div class="bubble">${pass?'Congratulations! You passed the final exam 🎓':'Not this time. Try again, you can do it!'}</div></div>
+    <div class="card">
+      <div class="row"><span>Your score</span><b>${pct}%</b></div>
+      <div class="row"><span>Passing score</span><b>${PASS_MARK}%</b></div>
+    </div>
+    ${pass ? adFinal() + `<button onclick="certForm()">🎓 Get my certificate</button>` : `<button onclick="startExam()">Retake the exam</button>`}
+    <button class="alt" onclick="home()">Back to home</button>`;
+}
+
+function certForm(){
+  renderHeader();
+  app().innerHTML = `<div class="hero">${alex('happy',70)}<div class="bubble">Enter your full name as it should appear on the certificate.</div></div>
+    <input id="cn" placeholder="Full name">
+    <button onclick="makeCert()">Create certificate</button>`;
+}
+function makeCert(){
+  const n=$('#cn').value.trim();
+  if(!n){ alert('Please enter your name.'); return; }
+  S.certs[S.lang] = {name:n, date:new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'}), id:'LP-'+Date.now().toString(36).toUpperCase(), lang:langInfo(S.lang).name};
+  save(); showCert(S.lang);
+}
+function showCert(l){
+  const c=S.certs[l]; renderHeader();
+  app().innerHTML = `<div class="cert">
+      <div class="ctitle">🎓 Certificate of Completion</div>
+      <div class="sub">This certificate is presented to</div>
+      <div class="cname">${esc(c.name)}</div>
+      <div>for completing the 5-month ${esc(c.lang)} course and passing the final exam</div>
+      <div class="hint">Date: ${c.date} | Certificate ID: ${c.id}</div>
+    </div>
+    <button onclick="window.print()">🖨️ Print / Save as PDF</button>
+    <button class="alt" onclick="home()">Back to home</button>`;
+}
+
+/* ===== Chat with Alex ===== */
+const REPLIES = [
+  [/\b(hello|hi|hey)\b/i, ['Hi there! How are you today?','Hello! Nice to see you. How is your day going?']],
+  [/how are you|how r u/i, ["I'm doing great, thanks for asking! And how about you?"]],
+  [/\b(good|fine|great|well|happy)\b/i, ["That's wonderful to hear! What did you do today?"]],
+  [/\b(bad|sad|tired|not good)\b/i, ["I'm sorry to hear that. Would you like to talk about it?"]],
+  [/my name is ([a-z]+)/i, ['Nice to meet you, $1! Where are you from?']],
+  [/what('?s| is) your name/i, ["My name is Alex. What's your name?"]],
+  [/where are you from|where do you live/i, ["I live in a big city that is always busy. Where do you live?"]],
+  [/\b(food|eat|eating|lunch|dinner|breakfast)\b/i, ['I love pizza! What is your favorite food?']],
+  [/\b(like|love)\b/i, ['That sounds great! Why do you like it?']],
+  [/\b(learn|learning|course|english|language)\b/i, ['You are doing amazing learning a language! What is your favorite word so far?']],
+  [/\b(thank you|thanks)\b/i, ["You're welcome! Keep practicing."]],
+  [/\b(bye|goodbye|see you)\b/i, ['Goodbye! It was nice talking with you. Practice again soon!']],
+];
+const FALLBACKS = ['That is interesting! Can you tell me more?','Good try! Could you say that in another way?','I see. What happened next?'];
+let chatLog = [], chatTurn = 0;
+function botReply(text){
+  for(const [rx, options] of REPLIES){
+    const m = text.match(rx);
+    if(m){
+      const opt = options[chatTurn % options.length];
+      return opt.replace('$1', m[1] || '');
+    }
+  }
+  return FALLBACKS[chatTurn % FALLBACKS.length];
+}
+function openChat(){
+  renderHeader();
+  chatLog = []; chatTurn = 0;
+  app().innerHTML = `<div class="hero">${alex('happy',70)}<div class="bubble">Hi! I'm Alex. Let's practice chatting in English.</div></div>
+    <div class="chat" id="chatbox"></div>
+    <div class="inrow"><input id="chatin" placeholder="Type a message..." onkeydown="if(event.key==='Enter')sendChat()"><button onclick="sendChat()">Send</button></div>
+    <button class="alt" onclick="home()">Back to home</button>`;
+}
+function addMsg(who, text){
+  const box = $('#chatbox'); if(!box) return;
+  const d = document.createElement('div');
+  d.className = 'msg ' + (who==='me' ? 'me' : 'bot');
+  d.textContent = text;
+  box.appendChild(d); box.scrollTop = box.scrollHeight;
+}
+function sendChat(){
+  const el = $('#chatin'); const text = el ? el.value.trim() : '';
+  if(!text) return;
+  el.value = '';
+  addMsg('me', text);
+  chatTurn++;
+  const reply = botReply(text);
+  setTimeout(()=>{ addMsg('bot', reply); speak(reply, 'en-US'); }, 400);
+}
+
+/* ===== Start ===== */
+home();
+</script>
+</body>
+</html>
